@@ -37,6 +37,7 @@ def index(request):
             m.output_image()
             floor1 = True
             floor2 = False
+            
             return render(request,'inmapapp/result.html',{'floor1':floor1,'floor2':floor2,'time':time.time()-then,'update':True})
         if From in floor2checkpoint and To in floor2checkpoint:
             From_x,From_y = floor2checkpoint[From]

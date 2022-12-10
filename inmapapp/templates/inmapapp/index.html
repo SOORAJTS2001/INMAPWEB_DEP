@@ -8,7 +8,6 @@
     <meta name="Description" content="Enter your description here" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
 
     <!-- Font Collection -->
     <link
@@ -121,7 +120,7 @@
                     class="btn-group btn-group-toggle mb-md-5 d-flex justify-content-center"
                     data-toggle="buttons"
                   >
-                    <label class="btn btn-primary active">
+                    <label class="btn btn-grad active">
                       <input
                         type="radio"
                         name="options"
@@ -131,7 +130,7 @@
                       />
                       Front Cam
                     </label>
-                    <label class="btn btn-secondary">
+                    <label class="btn btn-grad-sec">
                       <input
                         type="radio"
                         name="options"
@@ -177,7 +176,7 @@
               <option value="bedroom1-1st floor">bedroom1-1st floor</option>
               <option value="empty-1st floor">empty-1st floor</option>
               <option value="bath-1st floor">bath-1st floor</option>
-              <option value="stairentry-1st floor">bathroom-2nd floor</option>
+              <option value="bathroom-2nd floor">bathroom-2nd floor</option>
               <option value="bath2-1st floor">bath2-1st floor</option>
               <option value="room-1st floor">room-1st floor</option>
               <option value="stairexit-1st floor">stairexit-1st floor</option>
@@ -189,7 +188,7 @@
             </select>
           </div>
 
-          <button type="submit" class="btn btn-primary text-capitalize" style="font-weight:bold">
+          <button type="submit" class="btn btn-grad text-capitalize" style="font-weight:bold">
             find route
           </button>
         </form>
@@ -222,7 +221,7 @@
               <option value="bedroom1-1st floor">bedroom1-1st floor</option>
               <option value="empty-1st floor">empty-1st floor</option>
               <option value="bath-1st floor">bath-1st floor</option>
-              <option value="stairentry-1st floor">bathroom-2nd floor</option>
+              <option value="bathroom-2nd floor">bathroom-2nd floor</option>
               <option value="bath2-1st floor">bath2-1st floor</option>
               <option value="room-1st floor">room-1st floor</option>
               <option value="stairexit-1st floor">stairexit-1st floor</option>
@@ -248,7 +247,7 @@
               <option value="bedroom1-1st floor">bedroom1-1st floor</option>
               <option value="empty-1st floor">empty-1st floor</option>
               <option value="bath-1st floor">bath-1st floor</option>
-              <option value="stairentry-1st floor">bathroom-2nd floor</option>
+              <option value="bathroom-2nd floor">bathroom-2nd floor</option>
               <option value="bath2-1st floor">bath2-1st floor</option>
               <option value="room-1st floor">room-1st floor</option>
               <option value="stairexit-1st floor">stairexit-1st floor</option>
@@ -261,7 +260,7 @@
 
           <button
             type="submit"
-            class="btn btn-primary text-capitalize"
+            class="btn btn-grad text-capitalize"
             style="font-weight: bold"
           >
             find route
@@ -339,5 +338,17 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.9.2/umd/popper.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.1.0/js/bootstrap.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
+    {% comment %} <script>
+      var swiper = new Swiper(".mySwiper", {
+        slidesPerView: 2,
+        spaceBetween: 3,
+        loop:true,
+        autoplay: {
+          delay: 2500,
+          disableOnInteraction: false,
+        },
+       
+      });
+    </script> {% endcomment %}
   </body>
 </html>
