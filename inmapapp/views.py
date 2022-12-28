@@ -2,6 +2,7 @@ from django.shortcuts import render,redirect
 from .mazetest import Maze
 from .solutiondata import sols
 import time,os
+
 # floor1checkpoint = {"kitchen":(138, 23), "bedroom1":(48, 24), "emptyroom":(59, 41), "bath":(31, 44), "stairentry":(106, 45), "bath2":(58, 50), "room":(188, 50),"stairexit":(106, 53),"familyroom":(63, 67), "formaldining":(100, 68),"office":(139, 71), "exit":(79, 76)}
 # floor2checkpoint = {"bedroom1":(56,24), "familyroom":(119, 37), "bath":(32, 45), "stairentry":(143, 45), "emptyroom":(73, 51),"stairexit":(142, 51), "bedroom3":(146, 62),"bedroom2":(74, 63),"Bathroom":(107, 72)}
 
@@ -15,6 +16,7 @@ floor1 = False
 floor2 = False
 # Create your views here.
 def index(request):
+    global solutions
     if request.method == "GET":
         return render(request,'inmapapp/index.html',{'image':"inmapapp/MAP.png",'time':'','update':False})    
     else:
@@ -34,44 +36,69 @@ def index(request):
             To_x,To_y = floor1checkpoint[To]
             m = Maze(os.path.abspath('inmapapp/static/inmapapp/floor1.txt'),From_x,From_y,To_x,To_y,"floor1.png")
             m.solve()
-            m.output_image()
+            solutions = m.output_image()
             floor1 = True
             floor2 = False
-            
-            return render(request,'inmapapp/result.html',{'floor1':floor1,'floor2':floor2,'time':time.time()-then,'update':True})
+            ans=""
+            print(solutions[1])
+            for sol in solutions[1]:
+                ans+=f'''<span style="width:10px;height:10px;background:blue;position: absolute;top: {sol[0]*4.5}px;left: {sol[1]*4.2}px;"> </span>'''
+            # return render(request,'inmapapp/sample.html',{"data":ans})
+            return render(request,'inmapapp/result.html',{'floor1':floor1,'floor2':floor2,'time':time.time()-then,"data":ans,'update':True})
         if From in floor2checkpoint and To in floor2checkpoint:
             From_x,From_y = floor2checkpoint[From]
             To_x,To_y = floor2checkpoint[To]
             m = Maze(os.path.abspath('inmapapp/static/inmapapp/floor2.txt'),From_x,From_y,To_x,To_y,"floor2.png")
             m.solve()
-            m.output_image()
+            solutions = m.output_image()
             floor1=False
             floor2 = True
-            return render(request,'inmapapp/result.html',{'floor1':floor1,'floor2':floor2,'time':time.time()-then,'update':True})
+            ans=""
+            print(solutions[1])
+            for sol in solutions[1]:
+                ans+=f'''<span style="width:10px;height:10px;background:blue;position: absolute;top: {sol[0]*4.5}px;left: {sol[1]*4.2}px;"> </span>'''
+            # return render(request,'inmapapp/sample.html',{"data":ans})
+            return render(request,'inmapapp/result.html',{'floor1':floor1,'floor2':floor2,'time':time.time()-then,"data":ans,'update':True})
         if From in floor1checkpoint and To in floor2checkpoint:
             From_x,From_y = floor1checkpoint[From]
             To_x,To_y = floor2checkpoint[To]
             m = Maze(os.path.abspath('inmapapp/static/inmapapp/floor1.txt'),From_x,From_y,106,53,"floor1.png")
             m.solve()
-            m.output_image()
+            solutions1 = m.output_image()
+            ans1=""
+            print(solutions1[1])
+            for sol in solutions1[1]:
+                ans1+=f'''<span style="width:10px;height:10px;background:blue;position: absolute;top: {sol[0]*4.5}px;left: {sol[1]*4.2}px;"> </span>'''
             n = Maze(os.path.abspath('inmapapp/static/inmapapp/floor2.txt'),143,45,To_x,To_y,"floor2.png")
             n.solve()
-            n.output_image()
+            solutions2 = n.output_image()
             floor1=True
             floor2=True
-            return render(request,'inmapapp/result.html',{'floor1':floor1,'floor2':floor2,'time':time.time()-then,'update':True})
+            ans2=""
+            print(solutions2[1])
+            for sol in solutions2[1]:
+                ans2+=f'''<span style="width:10px;height:10px;background:blue;position: absolute;top: {sol[0]*4.5}px;left: {sol[1]*4.2}px;"> </span>'''
+            # return render(request,'inmapapp/sample.html',{"data":ans})
+            return render(request,'inmapapp/result.html',{'floor1':floor1,'floor2':floor2,'time':time.time()-then,"data1":ans1,"data2":ans2,'update':True})
         if From in floor2checkpoint and To in floor1checkpoint:
             From_x,From_y = floor2checkpoint[From]
             To_x,To_y = floor1checkpoint[To]
             m = Maze(os.path.abspath('inmapapp/static/inmapapp/floor2.txt'),From_x,From_y,142,51,"floor2.png")
             m.solve()
-            m.output_image()
+            solutions1 = m.output_image()
+            print(solutions1[1])
+            for sol in solutions1[1]:
+                ans1+=f'''<span style="width:10px;height:10px;background:blue;position: absolute;top: {sol[0]*4.5}px;left: {sol[1]*4.2}px;"> </span>'''
             n = Maze(os.path.abspath('inmapapp/static/inmapapp/floor1.txt'),106,45,To_x,To_y,"floor1.png")
             n.solve()
-            n.output_image()
+            solutions2 = n.output_image()
             floor1=True
             floor2=True
-            return render(request,'inmapapp/result.html',{'floor1':floor1,'floor2':floor2,'time':time.time()-then,'update':True})
+            ans2=""
+            print(solutions2[1])
+            for sol in solutions2[1]:
+                ans2+=f'''<span style="width:10px;height:10px;background:blue;position: absolute;top: {sol[0]*4.5}px;left: {sol[1]*4.2}px;"> </span>'''
+            return render(request,'inmapapp/result.html',{'floor1':floor1,'floor2':floor2,'time':time.time()-then,"data1":ans1,"data2":ans2,'update':True})
             # print(From_x,From_y,To_x,To_y)
             
             # /home/sooraj/Documents/PROJECTS/INMAPWEB/inmapproject/inmapapp/static/inmapapp/map.txt
@@ -92,8 +119,8 @@ def result(request):
 
 def sample(request):
     ans=""
-    for sol in sols:
-        ans+=f'''<div style="width:10px;height:10px;border:5px solid black;position: absolute;top: {sol[1]*4.2}px;left: {sol[0]*4.7}px;"> </div>'''
+    for sol in solutions[1]:
+        ans+=f'''<span style="width:10px;height:10px;background:blue;position: absolute;top: {sol[0]*4.5}px;left: {sol[1]*4.2}px;"> </span>'''
     return render(request,'inmapapp/sample.html',{"data":ans})
 def test(request):
     From = request.POST.get('fromLocation')

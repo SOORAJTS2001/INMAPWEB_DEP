@@ -58,7 +58,14 @@
       <div class="img-wrapper" id="overlay1" style="left:0%;">
         
         <div class="img-wrapper-overlay"></div>
-        <img src="{%static 'inmapapp/modfloor1.png' %}" class="img-fluid" alt="...">
+        <div class="container-fluid" style="max-height:465px;max-width:826px;">
+          <div class="row">
+            <div class="col">
+              <img src="{%static 'inmapapp/modfloor1.png' %}" alt="Image" class="img" />
+          {{data|safe}}
+            </div>
+            </div>
+        </div>
         <div class="border border-primary rounded p-2">floor1</div>
 
       </div>
@@ -70,7 +77,14 @@
         
         <div class="img-wrapper-overlay"></div>
 
-        <img src="{%static 'inmapapp/modfloor2.png' %}" class="img-fluid" alt="...">
+        <div class="container-fluid" style="max-height:465px;max-width:826px;">
+          <div class="row">
+            <div class="col">
+              <img src="{%static 'inmapapp/modfloor2.png' %}" alt="Image" class="img" />
+          {{data|safe}}
+            </div>
+            </div>
+        </div>
         <div class="border border-primary rounded p-2">floor2</div>
       </div>
       
@@ -81,7 +95,14 @@
     <div class="img-wrapper" id="overlay1" style="left:0%;">
         
       <div class="img-wrapper-overlay"></div>
-      <img src="{%static 'inmapapp/modfloor1.png' %}" class="img-fluid" alt="...">
+      <div class="container-fluid" style="max-height:465px;max-width:826px;">
+        <div class="row">
+          <div class="col">
+            <img src="{%static 'inmapapp/modfloor1.png' %}" alt="Image" class="img" />
+        {{data1|safe}}
+          </div>
+          </div>
+      </div>
       <br>
       <div class="border border-primary rounded p-2">floor1</div>
 
@@ -90,7 +111,14 @@
         
       <div class="img-wrapper-overlay"></div>
 
-      <img src="{%static 'inmapapp/modfloor2.png' %}" class="img-fluid" alt="...">
+      <div class="container-fluid" style="max-height:465px;max-width:826px;">
+        <div class="row">
+          <div class="col">
+            <img src="{%static 'inmapapp/modfloor2.png' %}" alt="Image" class="img" />
+        {{data2|safe}}
+          </div>
+          </div>
+      </div>
 <div class="border border-primary rounded p-2">floor2</div>
     </div>
     </div>
