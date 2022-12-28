@@ -85,20 +85,20 @@ def index(request):
             To_x,To_y = floor1checkpoint[To]
             m = Maze(os.path.abspath('inmapapp/static/inmapapp/floor2.txt'),From_x,From_y,142,51,"floor2.png")
             m.solve()
-            ans1=""
-            solutions1 = m.output_image()
-            print(solutions1[1])
-            for sol in solutions1[1]:
-                ans1+=f'''<span style="width:10px;height:10px;background:blue;position: absolute;top: {sol[0]*4.5}px;left: {sol[1]*4.2}px;"> </span>'''
-            n = Maze(os.path.abspath('inmapapp/static/inmapapp/floor1.txt'),106,45,To_x,To_y,"floor1.png")
-            n.solve()
-            solutions2 = n.output_image()
-            floor1=True
-            floor2=True
             ans2=""
+            solutions2 = m.output_image()
             print(solutions2[1])
             for sol in solutions2[1]:
                 ans2+=f'''<span style="width:10px;height:10px;background:blue;position: absolute;top: {sol[0]*4.5}px;left: {sol[1]*4.2}px;"> </span>'''
+            n = Maze(os.path.abspath('inmapapp/static/inmapapp/floor1.txt'),106,45,To_x,To_y,"floor1.png")
+            n.solve()
+            solutions1 = n.output_image()
+            floor1=True
+            floor2=True
+            ans1=""
+            print(solutions1[1])
+            for sol in solutions1[1]:
+                ans1+=f'''<span style="width:10px;height:10px;background:blue;position: absolute;top: {sol[0]*4.5}px;left: {sol[1]*4.2}px;"> </span>'''
             return render(request,'inmapapp/result.html',{'floor1':floor1,'floor2':floor2,'time':time.time()-then,"data1":ans1,"data2":ans2,'update':True})
             # print(From_x,From_y,To_x,To_y)
             
