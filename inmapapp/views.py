@@ -85,6 +85,7 @@ def index(request):
             To_x,To_y = floor1checkpoint[To]
             m = Maze(os.path.abspath('inmapapp/static/inmapapp/floor2.txt'),From_x,From_y,142,51,"floor2.png")
             m.solve()
+            ans1=""
             solutions1 = m.output_image()
             print(solutions1[1])
             for sol in solutions1[1]:
